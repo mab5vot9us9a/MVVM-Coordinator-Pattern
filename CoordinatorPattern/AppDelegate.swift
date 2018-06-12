@@ -12,10 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var coordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        /* Programmatically initiating the app flow.
+         * Delete Main.storyboard and set the Main Interface
+         * in your project settings to an empty string -
+         * otherwise it will crash */
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let rootViewController = UINavigationController()
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
+        
+        coordinator = AppCoordinator(context: rootViewController)
+        coordinator?.start()
+        
         return true
     }
 
