@@ -20,6 +20,7 @@ class OverviewDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = viewModel.title
         textLabel.text = viewModel.description
     }
 }

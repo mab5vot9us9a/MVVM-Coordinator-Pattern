@@ -6,8 +6,9 @@
 //  Copyright © 2018 Maurice Fahn. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol OverviewTableViewDelegate {
     func overviewTableViewController(didTapCell item: OverviewViewModel)
+    func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController)
 }

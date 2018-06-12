@@ -22,6 +22,19 @@ class OverviewTableViewController: UITableViewController {
         super.viewDidLoad()
         
         title = viewModel.title
+        
+        setupLogoutButton()
+    }
+    
+    // MARK: - UI Setup
+    
+    fileprivate func setupLogoutButton() {
+        let logoutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
+        self.navigationItem.rightBarButtonItem = logoutButton
+    }
+    
+    @objc func logOut() {
+        delegate?.overviewTableViewController(didTapLogOut: self)
     }
 
     // MARK: - Table view data source

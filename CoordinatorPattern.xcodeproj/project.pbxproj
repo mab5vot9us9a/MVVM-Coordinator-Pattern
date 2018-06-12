@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		518EF00D20CFCC61000BE50F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF00C20CFCC61000BE50F /* AppDelegate.swift */; };
-		518EF00F20CFCC61000BE50F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF00E20CFCC61000BE50F /* ViewController.swift */; };
 		518EF01420CFCC64000BE50F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518EF01320CFCC64000BE50F /* Assets.xcassets */; };
 		518EF01720CFCC64000BE50F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518EF01520CFCC64000BE50F /* LaunchScreen.storyboard */; };
 		518EF02D20CFCC65000BE50F /* CoordinatorPatternUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF02C20CFCC65000BE50F /* CoordinatorPatternUITests.swift */; };
@@ -22,6 +21,11 @@
 		518EF05A20CFF408000BE50F /* OverviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF05920CFF408000BE50F /* OverviewCoordinator.swift */; };
 		518EF06020CFF831000BE50F /* OverviewCoordinatorDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF05F20CFF831000BE50F /* OverviewCoordinatorDelegates.swift */; };
 		518EF06620D00908000BE50F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518EF06520D00908000BE50F /* Login.storyboard */; };
+		518EF06820D00979000BE50F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF06720D00979000BE50F /* LoginViewController.swift */; };
+		518EF06A20D00DFC000BE50F /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF06920D00DFC000BE50F /* LoginCoordinator.swift */; };
+		518EF06C20D00E76000BE50F /* LoginCoordinatorDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF06B20D00E76000BE50F /* LoginCoordinatorDelegates.swift */; };
+		518EF06E20D00F4C000BE50F /* AppCoordinatorDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF06D20D00F4C000BE50F /* AppCoordinatorDelegates.swift */; };
+		518EF07020D0119C000BE50F /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF06F20D0119C000BE50F /* Credentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +48,6 @@
 /* Begin PBXFileReference section */
 		518EF00920CFCC61000BE50F /* CoordinatorPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518EF00C20CFCC61000BE50F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		518EF00E20CFCC61000BE50F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		518EF01320CFCC64000BE50F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		518EF01620CFCC64000BE50F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		518EF01820CFCC64000BE50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +67,11 @@
 		518EF05920CFF408000BE50F /* OverviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewCoordinator.swift; sourceTree = "<group>"; };
 		518EF05F20CFF831000BE50F /* OverviewCoordinatorDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewCoordinatorDelegates.swift; sourceTree = "<group>"; };
 		518EF06520D00908000BE50F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		518EF06720D00979000BE50F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		518EF06920D00DFC000BE50F /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		518EF06B20D00E76000BE50F /* LoginCoordinatorDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorDelegates.swift; sourceTree = "<group>"; };
+		518EF06D20D00F4C000BE50F /* AppCoordinatorDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorDelegates.swift; sourceTree = "<group>"; };
+		518EF06F20D0119C000BE50F /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +122,12 @@
 		518EF00B20CFCC61000BE50F /* CoordinatorPattern */ = {
 			isa = PBXGroup;
 			children = (
+				518EF00C20CFCC61000BE50F /* AppDelegate.swift */,
+				518EF04B20CFE4FB000BE50F /* AppCoordinator.swift */,
+				518EF06D20D00F4C000BE50F /* AppCoordinatorDelegates.swift */,
 				518EF04820CFE48C000BE50F /* CoordinatorLogic */,
 				518EF04E20CFE5D2000BE50F /* Login */,
 				518EF04D20CFE5CA000BE50F /* Overview */,
-				518EF00C20CFCC61000BE50F /* AppDelegate.swift */,
-				518EF04B20CFE4FB000BE50F /* AppCoordinator.swift */,
-				518EF00E20CFCC61000BE50F /* ViewController.swift */,
 				518EF01320CFCC64000BE50F /* Assets.xcassets */,
 				518EF01520CFCC64000BE50F /* LaunchScreen.storyboard */,
 				518EF01820CFCC64000BE50F /* Info.plist */,
@@ -170,9 +178,9 @@
 			children = (
 				518EF06120D008E0000BE50F /* Coordinator */,
 				518EF06520D00908000BE50F /* Login.storyboard */,
+				518EF06220D008EA000BE50F /* ViewController */,
 				518EF06420D008FD000BE50F /* Model */,
 				518EF06320D008F7000BE50F /* ViewModel */,
-				518EF06220D008EA000BE50F /* ViewController */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -214,6 +222,8 @@
 		518EF06120D008E0000BE50F /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				518EF06920D00DFC000BE50F /* LoginCoordinator.swift */,
+				518EF06B20D00E76000BE50F /* LoginCoordinatorDelegates.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -221,6 +231,7 @@
 		518EF06220D008EA000BE50F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				518EF06720D00979000BE50F /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -235,6 +246,7 @@
 		518EF06420D008FD000BE50F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				518EF06F20D0119C000BE50F /* Credentials.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -376,11 +388,15 @@
 				518EF05420CFEAFE000BE50F /* OverviewDetailsViewController.swift in Sources */,
 				518EF05220CFE8B0000BE50F /* OverviewTableViewController.swift in Sources */,
 				518EF06020CFF831000BE50F /* OverviewCoordinatorDelegates.swift in Sources */,
+				518EF06C20D00E76000BE50F /* LoginCoordinatorDelegates.swift in Sources */,
 				518EF05620CFEB4B000BE50F /* OverviewViewModel.swift in Sources */,
+				518EF06A20D00DFC000BE50F /* LoginCoordinator.swift in Sources */,
 				518EF05820CFEB56000BE50F /* OverviewItem.swift in Sources */,
 				518EF05A20CFF408000BE50F /* OverviewCoordinator.swift in Sources */,
-				518EF00F20CFCC61000BE50F /* ViewController.swift in Sources */,
+				518EF07020D0119C000BE50F /* Credentials.swift in Sources */,
+				518EF06E20D00F4C000BE50F /* AppCoordinatorDelegates.swift in Sources */,
 				518EF00D20CFCC61000BE50F /* AppDelegate.swift in Sources */,
+				518EF06820D00979000BE50F /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

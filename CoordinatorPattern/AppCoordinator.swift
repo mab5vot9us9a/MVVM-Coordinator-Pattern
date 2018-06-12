@@ -10,17 +10,19 @@ import UIKit
 
 class AppCoordinator: Coordinator {
     
-//    var context: UIViewController
+    var context: UIViewController
     var navigationController: UINavigationController
     
-    var childCoordinators: [Coordinator] = [Coordinator]()
+    var currentCoordinator: Coordinator?
     
-    init(context: UINavigationController) {
-        self.navigationController = context
+    init(context: UIViewController) {
+        self.context = context
+        self.navigationController = UINavigationController()
+//        self.context.present(navigationController, animated: false, completion: nil)
     }
     
     func start() {
-        let loggedIn = {return true}()
+        let loggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
         
         if loggedIn {
             showOverview()
@@ -30,12 +32,30 @@ class AppCoordinator: Coordinator {
     }
     
     fileprivate func showOverview() {
-        let overviewCoordinator = OverviewCoordinator(context: navigationController)
-        self.childCoordinators.append(overviewCoordinator)
+        let overviewCoordinator = OverviewCoordinator(context: context)
+        overviewCoordinator.delegate = self
+        self.currentCoordinator = overviewCoordinator
         overviewCoordinator.start()
     }
     
     fileprivate func showLogin() {
-        
+        let loginCoordinator = LoginCoordinator(context: context)
+        loginCoordinator.delegate = self
+        self.currentCoordinator = loginCoordinator
+        loginCoordinator.start()
+    }
+}
+
+extension AppCoordinator: OverviewCoordinatorDelegate {
+    func overviewCoordinatorDidLogOut() {
+        self.currentCoordinator = nil
+        showLogin()
+    }
+}
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    func loginCoordinatorDidAuthenticate() {
+        self.currentCoordinator = nil
+        showOverview()
     }
 }

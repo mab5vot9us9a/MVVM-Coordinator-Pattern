@@ -11,6 +11,10 @@ import Foundation
 struct OverviewViewModel: CustomStringConvertible {
     let id: Int
     
+    var title: String {
+        return "#\(id+1)"
+    }
+    
     var description: String {
         return "This is OverviewViewModel #\(id+1)"
     }
