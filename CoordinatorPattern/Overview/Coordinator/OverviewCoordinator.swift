@@ -8,17 +8,23 @@
 
 import Foundation
 import UIKit
+import os
 
 class OverviewCoordinator: Coordinator {
     // MARK: - Coordinator
-    var context: UIViewController
+//    var context: UIViewController
     var navigationController: UINavigationController
     var delegate: OverviewCoordinatorDelegate?
     
-    public init(context: UIViewController) {
-        self.context = context
-        self.navigationController = UINavigationController()
+    public init(context: UINavigationController) {
+        self.navigationController = context
+        os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
+    
+    deinit {
+        os_log("Deinit %@", type: .debug, String(describing: type(of: self)))
+    }
+    
     
     func start() {
         showOverview()
@@ -41,9 +47,13 @@ class OverviewCoordinator: Coordinator {
         overviewTableVC.viewModel = viewModel
         overviewTableVC.delegate = self
         
-        context.present(navigationController, animated: false) { [weak self] in
-            self?.push(overviewTableVC)
-        }
+        push(overviewTableVC)
+
+//        context.present(navigationController, animated: false) { [weak self] in
+//            DispatchQueue.main.async {
+//                self?.push(overviewTableVC)
+//            }
+//        }
     }
 }
 
@@ -63,8 +73,8 @@ extension OverviewCoordinator: OverviewTableViewDelegate {
 
     func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
-        delegate?.overviewCoordinatorDidLogOut()
         viewController.dismiss(animated: true, completion: nil)
+        delegate?.overviewCoordinatorDidLogOut()
     }
 }
 

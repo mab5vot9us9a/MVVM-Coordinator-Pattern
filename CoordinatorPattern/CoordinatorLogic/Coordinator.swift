@@ -10,8 +10,8 @@ import UIKit
 
 protocol Coordinator {
     
-    var context: UIViewController { get }
-    var navigationController: UINavigationController { get set }
+//    var context: UIViewController { get }
+    var navigationController: UINavigationController { get } // set }
     
     func push(_ viewController: UIViewController, animated: Bool)
     func present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?)

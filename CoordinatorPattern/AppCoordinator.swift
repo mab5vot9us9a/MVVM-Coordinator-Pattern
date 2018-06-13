@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import os
 
 class AppCoordinator: Coordinator {
     
-    var context: UIViewController
+//    var context: UIViewController
     var navigationController: UINavigationController
     
-    var currentCoordinator: Coordinator?
+    var currentCoordinator: Coordinator? // Needed so object doesn't get deallocated
     
-    init(context: UIViewController) {
-        self.context = context
-        self.navigationController = UINavigationController()
-//        self.context.present(navigationController, animated: false, completion: nil)
+    init(context: UINavigationController) {
+        self.navigationController = context
+        os_log("Init %@", type: .debug, String(describing: type(of: self)))
+    }
+    
+    deinit {
+        os_log("Deinit %@", type: .debug, String(describing: type(of: self)))
     }
     
     func start() {
@@ -32,17 +36,19 @@ class AppCoordinator: Coordinator {
     }
     
     fileprivate func showOverview() {
-        let overviewCoordinator = OverviewCoordinator(context: context)
+        let overviewCoordinator = OverviewCoordinator(context: self.navigationController)
         overviewCoordinator.delegate = self
-        self.currentCoordinator = overviewCoordinator
         overviewCoordinator.start()
+        
+        self.currentCoordinator = overviewCoordinator
     }
     
     fileprivate func showLogin() {
-        let loginCoordinator = LoginCoordinator(context: context)
+        let loginCoordinator = LoginCoordinator(context: self.navigationController)
         loginCoordinator.delegate = self
-        self.currentCoordinator = loginCoordinator
         loginCoordinator.start()
+        
+        self.currentCoordinator = loginCoordinator
     }
 }
 

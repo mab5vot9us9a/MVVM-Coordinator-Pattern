@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class OverviewDetailsViewController: UIViewController {
     
@@ -22,5 +23,9 @@ class OverviewDetailsViewController: UIViewController {
 
         title = viewModel.title
         textLabel.text = viewModel.description
+    }
+    
+    deinit {
+        os_log("Deinit %@", type: .debug, String(describing: type(of: self)))
     }
 }

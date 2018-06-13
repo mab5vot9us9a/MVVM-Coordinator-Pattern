@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol OverviewTableViewDelegate {
+protocol OverviewTableViewDelegate: class {
     func overviewTableViewController(didTapCell item: OverviewViewModel)
     func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController)
 }

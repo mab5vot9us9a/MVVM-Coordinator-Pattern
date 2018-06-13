@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          * otherwise it will crash */
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootViewController = UINavigationController()
+        rootViewController.view.backgroundColor = UIColor.white
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
         

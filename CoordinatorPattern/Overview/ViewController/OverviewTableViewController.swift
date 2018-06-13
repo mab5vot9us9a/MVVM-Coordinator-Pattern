@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class OverviewTableViewController: UITableViewController {
     
@@ -24,6 +25,10 @@ class OverviewTableViewController: UITableViewController {
         title = viewModel.title
         
         setupLogoutButton()
+    }
+    
+    deinit {
+        os_log("Deinit %@", type: .debug, String(describing: type(of: self)))
     }
     
     // MARK: - UI Setup

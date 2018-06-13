@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol LoginViewControllerDelegate {
+protocol LoginViewControllerDelegate: class {
     func loginViewDidTapLogin(with credentials: Credentials, loginVC: LoginViewController)
 }

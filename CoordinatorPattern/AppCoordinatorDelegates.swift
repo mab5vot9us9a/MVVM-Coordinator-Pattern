@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol LoginCoordinatorDelegate {
+protocol LoginCoordinatorDelegate: class {
     func loginCoordinatorDidAuthenticate()
 }
 
-protocol OverviewCoordinatorDelegate {
+protocol OverviewCoordinatorDelegate: class {
     func overviewCoordinatorDidLogOut()
 }
