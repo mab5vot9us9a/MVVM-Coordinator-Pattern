@@ -43,10 +43,18 @@ class LoginCoordinator: Coordinator {
 
 extension LoginCoordinator: LoginViewControllerDelegate {
     func loginViewDidTapLogin(with credentials: Credentials, loginVC: LoginViewController) {
+        
+        UserDefaults.standard.set(true, forKey: "loggedIn")
+        loginVC.dismiss(animated: true, completion: nil)
+        delegate?.loginCoordinatorDidAuthenticate()
+        
+        /*
+        // Ignore Credentials for now
         if credentials.username == "test" && credentials.password == "test" {
             UserDefaults.standard.set(true, forKey: "loggedIn")
             loginVC.dismiss(animated: true, completion: nil)
             delegate?.loginCoordinatorDidAuthenticate()
         }
+         */
     }
 }

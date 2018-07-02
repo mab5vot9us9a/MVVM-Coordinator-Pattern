@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var logInButton: UIButton!
     
     var delegate: LoginViewControllerDelegate?
     
@@ -23,6 +24,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         usernameTextfield.delegate = self
         passwordTextfield.delegate = self
+        
+        logInButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,13 +47,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         return false
     }
-
-    func triggerLogin() {
+    
+    @IBAction func triggerLogin() {
         
+        /*
+        // Ignore input validation for now
         guard let name = usernameTextfield.text, !name.isEmpty,
               let password = passwordTextfield.text, !password.isEmpty else {
             return
         }
+         */
         
         delegate?.loginViewDidTapLogin(with: Credentials(username: usernameTextfield.text!, password: passwordTextfield.text!), loginVC: self)
     }

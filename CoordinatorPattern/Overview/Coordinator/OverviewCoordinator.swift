@@ -47,7 +47,7 @@ class OverviewCoordinator: Coordinator {
         overviewTableVC.viewModel = viewModel
         overviewTableVC.delegate = self
         
-        push(overviewTableVC)
+        push(overviewTableVC, animated: true)
 
 //        context.present(navigationController, animated: false) { [weak self] in
 //            DispatchQueue.main.async {
