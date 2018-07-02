@@ -11,13 +11,14 @@ import os
 
 class AppCoordinator: Coordinator {
     
-//    var context: UIViewController
-    var navigationController: UINavigationController
+    var context: UIViewController
+    var navigationController = UINavigationController()
     
     var currentCoordinator: Coordinator? // Needed so object doesn't get deallocated
     
-    init(context: UINavigationController) {
-        self.navigationController = context
+    init(context: UIViewController) {
+        self.context = context
+        self.context.present(navigationController, animated: false, completion: nil)
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     

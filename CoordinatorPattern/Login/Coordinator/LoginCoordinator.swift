@@ -10,14 +10,13 @@ import UIKit
 import os
 
 class LoginCoordinator: Coordinator {
-//    var context: UIViewController
-    var navigationController: UINavigationController
+    var context: UIViewController
+    var navigationController = UINavigationController()
     var delegate: LoginCoordinatorDelegate?
     
-    init(context: UINavigationController) {
-        self.navigationController = context
-//        self.navigationController = UINavigationController()
-//        self.context.present(navigationController, animated: false, completion: nil)
+    init(context: UIViewController) {
+        self.context = context
+        self.context.present(navigationController, animated: false, completion: nil)
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
@@ -30,14 +29,7 @@ class LoginCoordinator: Coordinator {
         let loginVC = storyboard.instantiateViewController(withIdentifier: LoginViewController.storyboardIdentifier) as! LoginViewController
         loginVC.delegate = self
 
-        DispatchQueue.main.async {
-            self.present(loginVC, animated: false)
-        }
-//        context.present(navigationController, animated: false) { [weak self] in
-//            DispatchQueue.main.async {
-//                self?.present(loginVC, animated: false)
-//            }
-//        }
+        present(loginVC, animated: false)
     }
 }
 

@@ -12,12 +12,13 @@ import os
 
 class OverviewCoordinator: Coordinator {
     // MARK: - Coordinator
-//    var context: UIViewController
-    var navigationController: UINavigationController
+    var context: UIViewController
+    var navigationController = UINavigationController()
     var delegate: OverviewCoordinatorDelegate?
     
-    public init(context: UINavigationController) {
-        self.navigationController = context
+    public init(context: UIViewController) {
+        self.context = context
+        self.context.present(navigationController, animated: false, completion: nil)
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
