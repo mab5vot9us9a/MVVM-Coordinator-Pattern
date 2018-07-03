@@ -13,12 +13,11 @@ import os
 class OverviewCoordinator: Coordinator {
     // MARK: - Coordinator
     var context: UIViewController
-    var navigationController = UINavigationController()
+    var navigationController: UINavigationController?
     var delegate: OverviewCoordinatorDelegate?
     
     public init(context: UIViewController) {
         self.context = context
-        self.context.present(navigationController, animated: false, completion: nil)
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
@@ -48,13 +47,10 @@ class OverviewCoordinator: Coordinator {
         overviewTableVC.viewModel = viewModel
         overviewTableVC.delegate = self
         
-        push(overviewTableVC, animated: true)
-
-//        context.present(navigationController, animated: false) { [weak self] in
-//            DispatchQueue.main.async {
-//                self?.push(overviewTableVC)
-//            }
-//        }
+        navigationController = UINavigationController(rootViewController: overviewTableVC)
+        navigationController?.modalTransitionStyle = .flipHorizontal
+        
+        present(navigationController!, animated: true)
     }
 }
 
@@ -64,6 +60,10 @@ extension OverviewCoordinator: OverviewTableViewDelegate {
     }
     
     fileprivate func showDetails(_ item: OverviewViewModel) {
+        guard navigationController != nil else {
+            return
+        }
+        
         let storyboard = UIStoryboard(name: OverviewDetailsViewController.storyboard, bundle: nil)
         let overviewDetailsVC = storyboard.instantiateViewController(withIdentifier: OverviewDetailsViewController.storyboardIdentifier) as! OverviewDetailsViewController
         
@@ -74,8 +74,9 @@ extension OverviewCoordinator: OverviewTableViewDelegate {
 
     func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
-        viewController.dismiss(animated: true, completion: nil)
+        viewController.dismiss(animated: false, completion: nil)
         delegate?.overviewCoordinatorDidLogOut()
+        navigationController = nil // VERY IMPORTANT – memory leak otherwise
     }
 }
 

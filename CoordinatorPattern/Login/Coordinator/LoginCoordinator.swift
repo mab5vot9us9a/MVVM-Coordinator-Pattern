@@ -11,12 +11,11 @@ import os
 
 class LoginCoordinator: Coordinator {
     var context: UIViewController
-    var navigationController = UINavigationController()
+    var navigationController: UINavigationController?
     var delegate: LoginCoordinatorDelegate?
     
     init(context: UIViewController) {
         self.context = context
-        self.context.present(navigationController, animated: false, completion: nil)
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
@@ -28,7 +27,9 @@ class LoginCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: LoginViewController.storyboardName, bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: LoginViewController.storyboardIdentifier) as! LoginViewController
         loginVC.delegate = self
-
+        
+        loginVC.modalTransitionStyle = .flipHorizontal
+        
         present(loginVC, animated: false)
     }
 }
@@ -37,7 +38,7 @@ extension LoginCoordinator: LoginViewControllerDelegate {
     func loginViewDidTapLogin(with credentials: Credentials, loginVC: LoginViewController) {
         
         UserDefaults.standard.set(true, forKey: "loggedIn")
-        loginVC.dismiss(animated: true, completion: nil)
+        loginVC.dismiss(animated: false, completion: nil)
         delegate?.loginCoordinatorDidAuthenticate()
         
         /*

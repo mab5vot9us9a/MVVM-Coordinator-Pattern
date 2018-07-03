@@ -25,6 +25,13 @@ class OverviewDetailsViewController: UIViewController {
         textLabel.text = viewModel.description
     }
     
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        os_log("Init %@", type: .debug, String(describing: type(of: self)))
+    }
+    
     deinit {
         os_log("Deinit %@", type: .debug, String(describing: type(of: self)))
     }

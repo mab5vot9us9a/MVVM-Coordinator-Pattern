@@ -21,12 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          * in your project settings to an empty string -
          * otherwise it will crash */
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
         
-        let rootViewController = UINavigationController()
+        let rootViewController = UIViewController()
         rootViewController.view.backgroundColor = UIColor.white
         window?.rootViewController = rootViewController
-        
+        window?.makeKeyAndVisible()
         
         coordinator = AppCoordinator(context: rootViewController)
         coordinator?.start()
