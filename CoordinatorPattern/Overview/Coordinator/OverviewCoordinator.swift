@@ -50,7 +50,7 @@ class OverviewCoordinator: Coordinator {
         navigationController = UINavigationController(rootViewController: overviewTableVC)
         navigationController?.modalTransitionStyle = .flipHorizontal
         
-        present(navigationController!, animated: true)
+        present(navigationController!, animated: false)
     }
 }
 
@@ -69,7 +69,7 @@ extension OverviewCoordinator: OverviewTableViewDelegate {
         
         overviewDetailsVC.viewModel = item
         
-        push(overviewDetailsVC)
+        push(overviewDetailsVC, animated: true)
     }
 
     func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController) {

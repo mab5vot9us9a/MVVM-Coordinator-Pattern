@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     static let storyboardName: String = "Login"
@@ -18,14 +19,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: LoginViewControllerDelegate?
     
+    deinit {
+        os_log("Deinit %@", type: .debug, String(describing: type(of: self)))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        os_log("viewDidLoad %@", type: .debug, String(describing: type(of: self)))
+        
         // Do any additional setup after loading the view.
         usernameTextfield.delegate = self
         passwordTextfield.delegate = self
         
         logInButton.layer.cornerRadius = 5
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        os_log("viewDidAppear %@", type: .debug, String(describing: type(of: self)))
     }
 
     override func didReceiveMemoryWarning() {

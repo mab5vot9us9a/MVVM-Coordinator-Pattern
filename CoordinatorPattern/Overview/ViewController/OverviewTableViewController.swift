@@ -25,6 +25,14 @@ class OverviewTableViewController: UITableViewController {
         title = viewModel.title
         
         setupLogoutButton()
+        
+        os_log("viewDidLoad %@", type: .debug, String(describing: type(of: self)))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        os_log("viewDidAppear %@", type: .debug, String(describing: type(of: self)))
     }
     
     deinit {

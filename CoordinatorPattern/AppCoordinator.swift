@@ -18,13 +18,14 @@ class AppCoordinator: Coordinator {
     
     init(context: UIViewController) {
         self.context = context
-//        self.context.present(navigationController, animated: false, completion: nil)
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
     deinit {
         os_log("Deinit %@", type: .debug, String(describing: type(of: self)))
     }
+    
+    // MARK: - Start
     
     func start() {
         let loggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
@@ -35,6 +36,8 @@ class AppCoordinator: Coordinator {
             showLogin()
         }
     }
+    
+    // MARK: - Coordinate
     
     fileprivate func showOverview() {
         let overviewCoordinator = OverviewCoordinator(context: self.context)
@@ -51,18 +54,25 @@ class AppCoordinator: Coordinator {
         
         self.currentCoordinator = loginCoordinator
     }
+    
+    // MARK: - Util
+    
+    fileprivate func removeCurrentCoordinator() {
+        self.currentCoordinator = nil
+    }
 }
 
+// MARK: - Delegate Implementations
 extension AppCoordinator: OverviewCoordinatorDelegate {
     func overviewCoordinatorDidLogOut() {
         showLogin()
-        self.currentCoordinator = nil
+        removeCurrentCoordinator()
     }
 }
 
 extension AppCoordinator: LoginCoordinatorDelegate {
     func loginCoordinatorDidAuthenticate() {
         showOverview()
-//        self.currentCoordinator = nil
+        removeCurrentCoordinator()
     }
 }

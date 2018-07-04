@@ -34,6 +34,8 @@ class LoginCoordinator: Coordinator {
     }
 }
 
+// MARK: - Delegate Implementations
+
 extension LoginCoordinator: LoginViewControllerDelegate {
     func loginViewDidTapLogin(with credentials: Credentials, loginVC: LoginViewController) {
         
