@@ -9,18 +9,18 @@
 import Foundation
 
 struct OverviewViewModel: CustomStringConvertible {
-    let id: Int
+    let item: OverviewItem
     
     var title: String {
-        return "#\(id+1)"
+        return "#\(item.id+1)"
     }
     
     var description: String {
-        return "This is OverviewViewModel #\(id+1)"
+        return "This is OverviewViewModel #\(item.id+1)"
     }
     
     init(item: OverviewItem) {
-        self.id = item.id
+        self.item = item
     }
 }
 

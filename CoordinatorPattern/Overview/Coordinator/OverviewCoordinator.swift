@@ -12,12 +12,11 @@ import os
 
 class OverviewCoordinator: Coordinator {
     // MARK: - Coordinator
-    var context: UIViewController
     var navigationController: UINavigationController?
     var delegate: OverviewCoordinatorDelegate?
     
-    public init(context: UIViewController) {
-        self.context = context
+    public init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
@@ -47,10 +46,12 @@ class OverviewCoordinator: Coordinator {
         overviewTableVC.viewModel = viewModel
         overviewTableVC.delegate = self
         
-        navigationController = UINavigationController(rootViewController: overviewTableVC)
-        navigationController?.modalTransitionStyle = .flipHorizontal
+//        let navController = UINavigationController(rootViewController: overviewTableVC)
+//        navController.modalTransitionStyle = .flipHorizontal
         
-        present(navigationController!, animated: false)
+        self.navigationController?.pushViewController(overviewTableVC, animated: false)
+//
+//        present(navigationController!, animated: false)
     }
 }
 

@@ -23,13 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let rootViewController = UINavigationController()
-        rootViewController.isNavigationBarHidden = true
+//        rootViewController.isNavigationBarHidden = true
         rootViewController.view.backgroundColor = UIColor.red
         window?.rootViewController = rootViewController
-        window?.makeKeyAndVisible()
         
-        coordinator = AppCoordinator(context: rootViewController)
+        self.coordinator = AppCoordinator(navigationController: rootViewController)
         coordinator?.start()
+        
+        window?.makeKeyAndVisible()
         
         return true
     }
