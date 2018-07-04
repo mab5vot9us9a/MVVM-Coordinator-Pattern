@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          * otherwise it will crash */
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let rootViewController = UIViewController()
+        let rootViewController = UINavigationController()
+        rootViewController.isNavigationBarHidden = true
         rootViewController.view.backgroundColor = UIColor.red
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
