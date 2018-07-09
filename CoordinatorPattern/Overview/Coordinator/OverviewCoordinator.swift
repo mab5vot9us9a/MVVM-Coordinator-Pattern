@@ -75,7 +75,6 @@ extension OverviewCoordinator: OverviewTableViewDelegate {
 
     func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
-//        viewController.dismiss(animated: false, completion: nil)
         delegate?.overviewCoordinatorDidLogOut()
         navigationController = nil // VERY IMPORTANT – memory leak otherwise
     }

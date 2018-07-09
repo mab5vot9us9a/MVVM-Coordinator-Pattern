@@ -22,12 +22,12 @@ protocol Coordinator {
 extension Coordinator {
     
     /** Pushes a view controller onto the receiver’s stack and updates the display. */
-    func push(_ viewController: UIViewController, animated: Bool = false) {
+    public func push(_ viewController: UIViewController, animated: Bool = false) {
         navigationController?.pushViewController(viewController, animated: animated)
     }
     
     /** Presents a view controller modally. */
-    func present(_ viewController: UIViewController, animated: Bool = false, completion: (() -> Void)? = nil) {
+    public func present(_ viewController: UIViewController, animated: Bool = false, completion: (() -> Void)? = nil) {
         context.present(viewController, animated: animated, completion: completion)
 //        navigationController?.present(viewController, animated: animated, completion: completion)
     }
