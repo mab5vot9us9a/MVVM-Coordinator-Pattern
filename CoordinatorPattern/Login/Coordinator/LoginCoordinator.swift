@@ -10,11 +10,12 @@ import UIKit
 import os
 
 class LoginCoordinator: Coordinator {
+    var context: UIViewController
     var navigationController: UINavigationController?
     var delegate: LoginCoordinatorDelegate?
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(context: UIViewController) {
+        self.context = context
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
@@ -27,10 +28,9 @@ class LoginCoordinator: Coordinator {
         let loginVC = storyboard.instantiateViewController(withIdentifier: LoginViewController.storyboardIdentifier) as! LoginViewController
         loginVC.delegate = self
         
-//        loginVC.modalTransitionStyle = .flipHorizontal
+        loginVC.modalTransitionStyle = .flipHorizontal
         
-//        present(loginVC, animated: false)
-        self.navigationController?.pushViewController(loginVC, animated: false)
+        present(loginVC, animated: false)
     }
 }
 

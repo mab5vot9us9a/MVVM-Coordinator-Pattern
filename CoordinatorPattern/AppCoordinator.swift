@@ -11,12 +11,13 @@ import os
 
 class AppCoordinator: Coordinator {
     
+    var context: UIViewController
     var navigationController: UINavigationController?
     
     var currentCoordinator: Coordinator? // Needed so object doesn't get deallocated
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(context: UIViewController) {
+        self.context = context
         os_log("Init %@", type: .debug, String(describing: type(of: self)))
     }
     
@@ -39,7 +40,7 @@ class AppCoordinator: Coordinator {
     // MARK: - Coordinate
     
     fileprivate func showOverview() {
-        let overviewCoordinator = OverviewCoordinator(navigationController: self.navigationController!)
+        let overviewCoordinator = OverviewCoordinator(context: self.context)
         overviewCoordinator.delegate = self
         overviewCoordinator.start()
         
@@ -47,7 +48,7 @@ class AppCoordinator: Coordinator {
     }
     
     fileprivate func showLogin() {
-        let loginCoordinator = LoginCoordinator(navigationController: self.navigationController!)
+        let loginCoordinator = LoginCoordinator(context: self.context)
         loginCoordinator.delegate = self
         loginCoordinator.start()
         

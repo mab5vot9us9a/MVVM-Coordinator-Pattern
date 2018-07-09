@@ -10,6 +10,7 @@ import UIKit
 
 protocol Coordinator {
     
+    var context: UIViewController { get }
     var navigationController: UINavigationController? { get } // set }
     
     func push(_ viewController: UIViewController, animated: Bool)
@@ -27,7 +28,7 @@ extension Coordinator {
     
     /** Presents a view controller modally. */
     func present(_ viewController: UIViewController, animated: Bool = false, completion: (() -> Void)? = nil) {
-        navigationController?.present(viewController, animated: animated, completion: completion)
+        context.present(viewController, animated: animated, completion: completion)
 //        navigationController?.present(viewController, animated: animated, completion: completion)
     }
 }
