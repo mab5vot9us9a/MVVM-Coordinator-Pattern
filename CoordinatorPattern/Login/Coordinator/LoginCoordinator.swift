@@ -30,7 +30,9 @@ class LoginCoordinator: Coordinator {
         
         loginVC.modalTransitionStyle = .flipHorizontal
         
-        present(loginVC, animated: false)
+//        present(loginVC, animated: false)
+        AppDelegate.appDelegate.window?.rootViewController = loginVC
+        AppDelegate.appDelegate.window?.makeKeyAndVisible()
     }
 }
 
@@ -40,7 +42,7 @@ extension LoginCoordinator: LoginViewControllerDelegate {
     func loginViewDidTapLogin(with credentials: Credentials, loginVC: LoginViewController) {
         
         UserDefaults.standard.set(true, forKey: "loggedIn")
-        loginVC.dismiss(animated: false, completion: nil)
+//        loginVC.dismiss(animated: false, completion: nil)
         delegate?.loginCoordinatorDidAuthenticate()
         
         /*

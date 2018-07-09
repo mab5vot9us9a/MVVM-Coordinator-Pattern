@@ -50,7 +50,8 @@ class OverviewCoordinator: Coordinator {
         navigationController = UINavigationController(rootViewController: overviewTableVC)
         navigationController?.modalTransitionStyle = .flipHorizontal
         
-        present(navigationController!, animated: false)
+        AppDelegate.appDelegate.window?.rootViewController = navigationController
+        AppDelegate.appDelegate.window?.makeKeyAndVisible()
     }
 }
 
@@ -74,7 +75,7 @@ extension OverviewCoordinator: OverviewTableViewDelegate {
 
     func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
-        viewController.dismiss(animated: false, completion: nil)
+//        viewController.dismiss(animated: false, completion: nil)
         delegate?.overviewCoordinatorDidLogOut()
         navigationController = nil // VERY IMPORTANT – memory leak otherwise
     }
