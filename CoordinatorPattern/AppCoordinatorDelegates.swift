@@ -15,3 +15,7 @@ protocol LoginCoordinatorDelegate: class {
 protocol OverviewCoordinatorDelegate: class {
     func overviewCoordinatorDidLogOut()
 }
+
+protocol LockedCoordinatorDelegate: class {
+    func lockedCoordinatorDidUnlock()
+}

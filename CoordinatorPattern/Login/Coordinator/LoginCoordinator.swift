@@ -11,7 +11,7 @@ import os
 
 class LoginCoordinator: Coordinator {
     var context: UIViewController
-    var navigationController: UINavigationController?
+    weak var navigationController: UINavigationController?
     var delegate: LoginCoordinatorDelegate?
     
     init(context: UIViewController) {

@@ -12,7 +12,7 @@ import os
 class AppCoordinator: Coordinator {
     
     var context: UIViewController
-    var navigationController: UINavigationController?
+    weak var navigationController: UINavigationController?
     
     var currentCoordinator: Coordinator? // Needed so object doesn't get deallocated
     
@@ -29,12 +29,23 @@ class AppCoordinator: Coordinator {
     
     func start() {
         let loggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
+        let locked = UserDefaults.standard.bool(forKey: "locked")
         
-        if loggedIn {
-            showOverview()
+        if locked {
+            showLocked()
         } else {
-            showLogin()
+            if loggedIn {
+                showOverview()
+            } else {
+                showLogin()
+            }
         }
+    }
+    
+    // MARK: - Lock
+    func lockScreen() {
+        removeCurrentCoordinator()
+        showLocked()
     }
     
     // MARK: - Coordinate
@@ -55,6 +66,14 @@ class AppCoordinator: Coordinator {
         self.currentCoordinator = loginCoordinator
     }
     
+    fileprivate func showLocked() {
+        let lockedCoordinator = LockedCoordinator(context: self.context)
+        lockedCoordinator.delegate = self
+        lockedCoordinator.start()
+        
+        self.currentCoordinator = lockedCoordinator
+    }
+    
     // MARK: - Util
     
     fileprivate func removeCurrentCoordinator() {
@@ -65,14 +84,21 @@ class AppCoordinator: Coordinator {
 // MARK: - Delegate Implementations
 extension AppCoordinator: OverviewCoordinatorDelegate {
     func overviewCoordinatorDidLogOut() {
-        showLogin()
         removeCurrentCoordinator()
+        showLogin()
     }
 }
 
 extension AppCoordinator: LoginCoordinatorDelegate {
     func loginCoordinatorDidAuthenticate() {
-        showOverview()
         removeCurrentCoordinator()
+        showOverview()
+    }
+}
+
+extension AppCoordinator: LockedCoordinatorDelegate {
+    func lockedCoordinatorDidUnlock() {
+        removeCurrentCoordinator()
+        start()
     }
 }

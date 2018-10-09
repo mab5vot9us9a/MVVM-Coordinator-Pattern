@@ -13,7 +13,7 @@ import os
 class OverviewCoordinator: Coordinator {
     // MARK: - Coordinator
     var context: UIViewController
-    var navigationController: UINavigationController?
+    weak var navigationController: UINavigationController?
     var delegate: OverviewCoordinatorDelegate?
     
     public init(context: UIViewController) {
@@ -76,7 +76,7 @@ extension OverviewCoordinator: OverviewTableViewDelegate {
     func overviewTableViewController(didTapLogOut viewController: OverviewTableViewController) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
         delegate?.overviewCoordinatorDidLogOut()
-        navigationController = nil // VERY IMPORTANT – memory leak otherwise
+//        navigationController = nil // VERY IMPORTANT – memory leak otherwise
     }
 }
 

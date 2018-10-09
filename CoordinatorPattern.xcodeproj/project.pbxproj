@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510C0026216CD00A005E12FC /* Locked.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 510C0025216CD00A005E12FC /* Locked.storyboard */; };
+		510C0028216CD036005E12FC /* LockedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510C0027216CD036005E12FC /* LockedViewController.swift */; };
+		510C002C216CD0E6005E12FC /* LockedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510C002B216CD0E6005E12FC /* LockedCoordinator.swift */; };
+		510C002E216CD177005E12FC /* LockedCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510C002D216CD177005E12FC /* LockedCoordinatorDelegate.swift */; };
 		518EF00D20CFCC61000BE50F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EF00C20CFCC61000BE50F /* AppDelegate.swift */; };
 		518EF01420CFCC64000BE50F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518EF01320CFCC64000BE50F /* Assets.xcassets */; };
 		518EF01720CFCC64000BE50F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518EF01520CFCC64000BE50F /* LaunchScreen.storyboard */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		510C0025216CD00A005E12FC /* Locked.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Locked.storyboard; sourceTree = "<group>"; };
+		510C0027216CD036005E12FC /* LockedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedViewController.swift; sourceTree = "<group>"; };
+		510C002B216CD0E6005E12FC /* LockedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedCoordinator.swift; sourceTree = "<group>"; };
+		510C002D216CD177005E12FC /* LockedCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		518EF00920CFCC61000BE50F /* CoordinatorPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518EF00C20CFCC61000BE50F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518EF01320CFCC64000BE50F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +107,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		510C0024216CCFFA005E12FC /* Locked */ = {
+			isa = PBXGroup;
+			children = (
+				510C0029216CD0C4005E12FC /* Coordinator */,
+				510C002A216CD0CB005E12FC /* ViewController */,
+				510C0025216CD00A005E12FC /* Locked.storyboard */,
+			);
+			path = Locked;
+			sourceTree = "<group>";
+		};
+		510C0029216CD0C4005E12FC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				510C002B216CD0E6005E12FC /* LockedCoordinator.swift */,
+				510C002D216CD177005E12FC /* LockedCoordinatorDelegate.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		510C002A216CD0CB005E12FC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				510C0027216CD036005E12FC /* LockedViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		518EF00020CFCC61000BE50F = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +163,7 @@
 				518EF04820CFE48C000BE50F /* CoordinatorLogic */,
 				518EF04E20CFE5D2000BE50F /* Login */,
 				518EF04D20CFE5CA000BE50F /* Overview */,
+				510C0024216CCFFA005E12FC /* Locked */,
 				518EF01320CFCC64000BE50F /* Assets.xcassets */,
 				518EF01520CFCC64000BE50F /* LaunchScreen.storyboard */,
 				518EF01820CFCC64000BE50F /* Info.plist */,
@@ -357,6 +393,7 @@
 			files = (
 				518EF06620D00908000BE50F /* Login.storyboard in Resources */,
 				518EF01720CFCC64000BE50F /* LaunchScreen.storyboard in Resources */,
+				510C0026216CD00A005E12FC /* Locked.storyboard in Resources */,
 				518EF01420CFCC64000BE50F /* Assets.xcassets in Resources */,
 				518EF05020CFE889000BE50F /* Overview.storyboard in Resources */,
 			);
@@ -384,18 +421,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				518EF04C20CFE4FB000BE50F /* AppCoordinator.swift in Sources */,
+				510C0028216CD036005E12FC /* LockedViewController.swift in Sources */,
 				518EF04A20CFE4A0000BE50F /* Coordinator.swift in Sources */,
 				518EF05420CFEAFE000BE50F /* OverviewDetailsViewController.swift in Sources */,
 				518EF05220CFE8B0000BE50F /* OverviewTableViewController.swift in Sources */,
 				518EF06020CFF831000BE50F /* OverviewCoordinatorDelegates.swift in Sources */,
 				518EF06C20D00E76000BE50F /* LoginCoordinatorDelegates.swift in Sources */,
 				518EF05620CFEB4B000BE50F /* OverviewViewModel.swift in Sources */,
+				510C002C216CD0E6005E12FC /* LockedCoordinator.swift in Sources */,
 				518EF06A20D00DFC000BE50F /* LoginCoordinator.swift in Sources */,
 				518EF05820CFEB56000BE50F /* OverviewItem.swift in Sources */,
 				518EF05A20CFF408000BE50F /* OverviewCoordinator.swift in Sources */,
 				518EF07020D0119C000BE50F /* Credentials.swift in Sources */,
 				518EF06E20D00F4C000BE50F /* AppCoordinatorDelegates.swift in Sources */,
 				518EF00D20CFCC61000BE50F /* AppDelegate.swift in Sources */,
+				510C002E216CD177005E12FC /* LockedCoordinatorDelegate.swift in Sources */,
 				518EF06820D00979000BE50F /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
